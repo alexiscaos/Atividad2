@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="formulario">
+        <caption>FORMULARIO</caption>
+
+        <div id="name">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" >
+        </div>
+
+        <div>
+            <label for="apellidos">Apellidos:</label>
+            <input type="text" id="apellidos" name="apellidos" >
+        </div>
+        
+        <div id="age"> 
+            <label for="edad">Edad:</label>
+            <input type="text" id="edad" name="edad" >
+        </div>
+        <div id="mensaje-error" class="error" style="display: none;"><p>¡Debes ser mayor de 17 años!</p></div>
+
+        <div id="sex">
+            <label for="sexo">Sexo:</label>
+            <br>
+            <label for="masculino">Masculino</label>
+            <input type="radio" id="masculino" name="sexo">
+            <label for="femenino">Femenino</label>
+            <input type="radio" id="femenino" name="sexo">
+
+        </div>
+
+        <div id="sttion">
+            <br>
+            <label for="situacion">Situacion Familiar</label>
+            <div id="estadoCivilHombre" style="display: none;">
+                <select name="mujer">
+                    <option value="">Soltero</option>
+                    <option value="">Casado</option>
+                    <option value="">Divorciado</option>
+                    <option value="">Viudo</option>
+                </select>
+            </div>
+        
+            <div id="estadoCivilMujer" style="display: none;">
+                <select name="mujerr">
+                    <option value="">Soltera</option>
+                    <option value="">Casada</option>
+                    <option value="">Divorciada</option>
+                    <option value="">Viuda</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="e-mail">
+            <br>
+            <label for="email">Email</label>
+            <input type="text" id="email" name="email">
+        </div>
+        <div id="email-error" class="error" style="display: none;">¡El correo electrónico no es válido!</div>
+
+        <div id="cellphone">
+            <br>
+            <label for="telefono">Telefono</label>
+            <input type="text" id="telefono" name="telefono">
+        </div>
+
+        <div id="telefono-error" class="error" style="display: none;">¡El número de teléfono no es válido!</div>
+
+        <div id="send">
+         
+            <input type="submit" id="enviar" name="enviar"> 
+        </div>
+        
+    </form>
+
+    <script>
+        function validarEdad() {
+            const inputEdad = document.getElementById('edad');
+            const mensajeError = document.getElementById('mensaje-error');
+
+            const edadIngresada = parseInt(inputEdad.value);
+
+            if (isNaN(edadIngresada) || edadIngresada < 18) {
+                mensajeError.style.display = 'block';
+            } else {
+                mensajeError.style.display = 'none'; 
+            }
+            document.getElementById('edad').addEventListener('change', validarEdad);
+        }
+
+   
+        function validarEmail() {
+            const inputEmail = document.getElementById('email');
+            const mensajeError = document.getElementById('email-error');
+
+            const emailIngresado = inputEmail.value;
+
+           
+            const regexEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+            if (!regexEmail.test(emailIngresado)) {
+                mensajeError.style.display = 'block';
+            } else {
+                mensajeError.style.display = 'none'; 
+            }
+            document.getElementById('email').addEventListener('change', validarEmail);
+        }
+
+      
+
+        function validarTelefono() {
+            const inputTelefono = document.getElementById('telefono');
+            const mensajeError = document.getElementById('telefono-error');
+
+            const telefonoIngresado = inputTelefono.value;
+
+           
+            const regexTelefono = /^[0-9\s]+$/;
+
+            if (!regexTelefono.test(telefonoIngresado)) {
+                mensajeError.style.display = 'block';
+            } else {
+                mensajeError.style.display = 'none'; 
+            }
+            document.getElementById('telefono').addEventListener('change', validarTelefono);
+        }
+
+        const masculinoRadio = document.getElementById('masculino');
+        const femeninoRadio = document.getElementById('femenino');
+        const estadoCivilHombre = document.getElementById('estadoCivilHombre');
+        const estadoCivilMujer = document.getElementById('estadoCivilMujer');
+
+        function actualizarEstadoCivil() {
+            if (masculinoRadio.checked) {
+                estadoCivilHombre.style.display = 'block';
+                estadoCivilMujer.style.display = 'none';
+            } else if (femeninoRadio.checked) {
+                estadoCivilHombre.style.display = 'none';
+                estadoCivilMujer.style.display = 'block';
+            }
+        }
+
+        masculinoRadio.addEventListener('change', actualizarEstadoCivil);
+        femeninoRadio.addEventListener('change', actualizarEstadoCivil);
+        
+    </script>
+</body>
+
+
+</html>
