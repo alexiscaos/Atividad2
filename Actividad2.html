@@ -91,7 +91,6 @@
             } else {
                 mensajeError.style.display = 'none'; 
             }
-            document.getElementById('edad').addEventListener('change', validarEdad);
         }
 
    
@@ -109,7 +108,6 @@
             } else {
                 mensajeError.style.display = 'none'; 
             }
-            document.getElementById('email').addEventListener('change', validarEmail);
         }
 
       
@@ -128,7 +126,6 @@
             } else {
                 mensajeError.style.display = 'none'; 
             }
-            document.getElementById('telefono').addEventListener('change', validarTelefono);
         }
 
         const masculinoRadio = document.getElementById('masculino');
@@ -148,7 +145,10 @@
 
         masculinoRadio.addEventListener('change', actualizarEstadoCivil);
         femeninoRadio.addEventListener('change', actualizarEstadoCivil);
-        
+        document.getElementById('edad').addEventListener('change', validarEdad);
+        document.getElementById('telefono').addEventListener('change', validarTelefono);
+        document.getElementById('email').addEventListener('change', validarEmail);
+
     </script>
 </body>
 
